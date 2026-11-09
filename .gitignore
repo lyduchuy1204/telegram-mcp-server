@@ -1,0 +1,46 @@
+# ---- Secrets: never commit these ----
+.env
+.env.*
+!.env.example
+*.session
+*.session-journal
+*.session.*
+session*.txt
+*.pem
+*.key
+secrets/
+.telegram-mcp/
+
+# ---- Personal media used for profile photos ----
+assets/
+*.jpg
+*.jpeg
+*.png
+!docs/**/*.png
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# ---- Editors / OS ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ---- Local MCP client config (may contain credentials) ----
+.mcp.json
+.claude/
+
+# ---- Lockfile is generated locally / in CI ----
+uv.lock

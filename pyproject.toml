@@ -1,0 +1,63 @@
+[project]
+name = "telegram-mcp-server"
+version = "0.1.0"
+description = "Security-first Telegram MCP server for personal accounts: read chats, clean up spam groups and harden privacy from Claude, Cursor or any MCP client. Dry-run by default."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Huy Ly", email = "lyduchuy1204@gmail.com" }]
+requires-python = ">=3.10"
+keywords = [
+    "telegram", "mcp", "mcp-server", "model-context-protocol", "telethon", "mtproto",
+    "claude", "claude-code", "cursor", "ai-agent", "telegram-api", "telegram-cleanup", "privacy",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Communications :: Chat",
+    "Topic :: Security",
+]
+dependencies = [
+    "mcp>=2.3,<3",
+    "telethon>=1.45,<2",
+]
+
+[project.urls]
+Homepage = "https://github.com/lyduchuy1204/telegram-mcp-server"
+Issues = "https://github.com/lyduchuy1204/telegram-mcp-server/issues"
+Security = "https://github.com/lyduchuy1204/telegram-mcp-server/security/policy"
+
+[project.scripts]
+telegram-mcp = "telegram_mcp.server:main"
+telegram-mcp-login = "telegram_mcp.login:main"
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/telegram_mcp"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "S", "SIM"]
+ignore = ["S101"]  # assert is fine in tests
+
+[tool.ruff.lint.per-file-ignores]
+"src/telegram_mcp/tools/cleanup.py" = ["BLE001"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
