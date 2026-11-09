@@ -39,7 +39,7 @@ telegram-mcp = "telegram_mcp.server:main"
 telegram-mcp-login = "telegram_mcp.login:main"
 
 [dependency-groups]
-dev = ["pytest>=8", "ruff>=0.6"]
+dev = ["pytest>=9.2.0", "ruff>=0.6"]
 
 [build-system]
 requires = ["hatchling>=1.27"]
